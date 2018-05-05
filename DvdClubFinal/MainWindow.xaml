@@ -1,0 +1,14 @@
+﻿<Window x:Class="DvdClubFinal.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="310" Loaded="Window_Loaded">
+    <Grid>
+        <TextBox Name="TextBoxBrojClanske" HorizontalAlignment="Left" Height="23" Margin="75,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142"/>
+        <Label Content="Broj clanske karte" HorizontalAlignment="Left" Margin="105,28,0,0" VerticalAlignment="Top"/>
+
+        <Button Name="ButtonPronadjiClana" Content="Pronadji Clana" HorizontalAlignment="Left" Margin="105,184,0,0" VerticalAlignment="Top" Width="93" Click="ButtonPronadjiClana_Click"/>
+        <Button Name="ButtonDodajClana" Content="Dodaj clana" HorizontalAlignment="Left" Margin="105,224,0,0" VerticalAlignment="Top" Width="93" Click="ButtonDodajClana_Click"/>
+        <Button Name="ButtonDodajFilmove" Content="Dodaj Filmove" HorizontalAlignment="Left" Margin="105,261,0,0" VerticalAlignment="Top" Width="93" Click="ButtonDodajFilmove_Click"/>
+        <ComboBox Name="ComboBox1" HorizontalAlignment="Left" Margin="88,79,0,0" VerticalAlignment="Top" Width="120"/>
+    </Grid>
+</Window>

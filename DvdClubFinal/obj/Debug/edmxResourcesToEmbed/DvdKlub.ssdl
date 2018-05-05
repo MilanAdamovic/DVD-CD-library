@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DvdKlubModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Clan">
+    <Key>
+      <PropertyRef Name="ClanID" />
+    </Key>
+    <Property Name="ClanID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ime" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Prezime" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Adresa" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Telefon" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="JMBG" Type="nvarchar" MaxLength="13" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Film">
+    <Key>
+      <PropertyRef Name="FilmID" />
+    </Key>
+    <Property Name="FilmID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NazivFilma" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Zanr" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Trajanje" Type="nvarchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Iznajmljivanje">
+    <Key>
+      <PropertyRef Name="IznajmljivanjeID" />
+    </Key>
+    <Property Name="IznajmljivanjeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClanID" Type="int" Nullable="false" />
+    <Property Name="FilmID" Type="int" Nullable="false" />
+    <Property Name="DatumIznajmljivanja" Type="date" Nullable="false" />
+    <Property Name="DatumVracanja" Type="date" Nullable="false" />
+    <Property Name="Cena" Type="float" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Iznajmlji__ClanI__145C0A3F">
+    <End Role="Clan" Type="Self.Clan" Multiplicity="1" />
+    <End Role="Iznajmljivanje" Type="Self.Iznajmljivanje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clan">
+        <PropertyRef Name="ClanID" />
+      </Principal>
+      <Dependent Role="Iznajmljivanje">
+        <PropertyRef Name="ClanID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Iznajmlji__FilmI__15502E78">
+    <End Role="Film" Type="Self.Film" Multiplicity="1" />
+    <End Role="Iznajmljivanje" Type="Self.Iznajmljivanje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Film">
+        <PropertyRef Name="FilmID" />
+      </Principal>
+      <Dependent Role="Iznajmljivanje">
+        <PropertyRef Name="FilmID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DvdKlubModelStoreContainer">
+    <EntitySet Name="Clan" EntityType="Self.Clan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Film" EntityType="Self.Film" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Iznajmljivanje" EntityType="Self.Iznajmljivanje" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Iznajmlji__ClanI__145C0A3F" Association="Self.FK__Iznajmlji__ClanI__145C0A3F">
+      <End Role="Clan" EntitySet="Clan" />
+      <End Role="Iznajmljivanje" EntitySet="Iznajmljivanje" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Iznajmlji__FilmI__15502E78" Association="Self.FK__Iznajmlji__FilmI__15502E78">
+      <End Role="Film" EntitySet="Film" />
+      <End Role="Iznajmljivanje" EntitySet="Iznajmljivanje" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
